@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat Ulang Tahun, Sayang!</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    /* Reset & Font */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #ffe6f0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; flex-direction: column; text-align: center; }
+    
+    /* Confetti */
+    .confetti { position: absolute; width: 10px; height: 10px; background-color: #ff4da6; top: -10px; animation: fall 3s linear infinite; }
+    @keyframes fall { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(100vh) rotate(360deg); } }
+
+    /* Ucapan */
+    h1 { font-size: 2.5rem; color: #ff3366; margin-bottom: 20px; }
+    p { font-size: 1.2rem; color: #ff6699; margin-bottom: 40px; }
+
+    /* Tombol */
+    .btn { background: #ff4da6; color: #fff; border: none; padding: 15px 30px; border-radius: 50px; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+    .btn:hover { background: #ff1a75; }
+
+    /* Hadiah / Pesan */
+    #gift { display: none; margin-top: 30px; }
+    #gift img { width: 250px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+    #gift p { margin-top: 20px; font-size: 1.2rem; color: #ff3366; }
+
+    /* Animasi muncul */
+    .show { display: block; animation: fadeIn 1s ease-in-out; }
+    @keyframes fadeIn { 0% {opacity:0; transform: translateY(-20px);} 100% {opacity:1; transform: translateY(0);} }
+</style>
+</head>
+<body>
+
+<!-- Confetti -->
+<div id="confetti-container"></div>
+
+<!-- Ucapan -->
+<h1>Selamat Ulang Tahun, Sayang!</h1>
+<p>Semoga hari ini spesial seperti kamu ❤️</p>
+
+<!-- Tombol Kue -->
+<a href="index.html">
+    <button class="btn" id="cakeBtn""> Terima Hadiah</button>
+</a>
+
+
+<script>
+    // Confetti
+    const confettiContainer = document.getElementById('confetti-container');
+    for(let i=0; i<100; i++){
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 70%)`;
+        confetti.style.animationDelay = Math.random() * 3 + 's';
+        confettiContainer.appendChild(confetti);
+    }
+
+    // Tombol kue
+    const cakeBtn = document.getElementById('cakeBtn');
+    const gift = document.getElementById('gift');
+    const music = document.getElementById('music');
+
+    cakeBtn.addEventListener('click', () => {
+        gift.classList.add('show');
+        music.play();
+        cakeBtn.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
